@@ -7,6 +7,26 @@
   color: white;
 }
 
+@media only screen and (min-width:992px) {
+  .text-lg-white *,
+  .text-lg-white {
+    color: white;
+  }
+}
+
+@media only screen and (min-width:768px) {
+  .text-md-white *,
+  .text-md-white {
+    color: white;
+  }
+}
+@media only screen and (max-width:767px) {
+  .text-sm-white *,
+  .text-sm-white {
+    color: white;
+  }
+}
+
 .text-accent,
 a {
   color: var(--accent-primary);

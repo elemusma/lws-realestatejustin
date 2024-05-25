@@ -35,7 +35,7 @@ export default function save({ attributes }) {
 		<div {...blockProps}>
 		<section className={`position-relative ${attributes.section_class}`} style={`padding:50px 0;${attributes.section_style}`} id={attributes.section_id}>
 		{attributes.section_image && (
-			<img src={attributes.section_image} alt="" className={`w-100 h-100 position-absolute bg-img ${attributes.section_image_class}`} style={`top:0;left:0;object-fit:cover;pointer-events:none;${attributes.section_image_style}`} />
+			<img src={attributes.section_image} alt={attributes.section_image_alt} className={`w-100 h-100 position-absolute bg-img ${attributes.section_image_class}`} style={`top:0;left:0;object-fit:cover;pointer-events:none;${attributes.section_image_style}`} />
 		)}
 
 			<RawHTML>{attributes.section_block}</RawHTML>

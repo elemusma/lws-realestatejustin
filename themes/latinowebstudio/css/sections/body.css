@@ -127,14 +127,14 @@ hr.text-white {
   width: auto;
 }
 
-.overlay {
+/* .overlay {
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
   position: absolute;
-}
+} */
 
 .divider {
   border-top: 2px solid var(--accent-primary);
@@ -153,6 +153,19 @@ hr.text-white {
 
 .grecaptcha-badge {
   display: none !important;
+}
+
+@media only screen and (max-width:991px) {
+  .hero.mobile-img {
+    padding-top:0px!important;
+  }
+  .hero.mobile-img img.position-absolute.bg-img {
+    position: relative !important;
+  }
+
+  .hero.mobile-img .overlay {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 1024px) {

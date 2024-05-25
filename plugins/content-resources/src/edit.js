@@ -49,6 +49,7 @@ export default function Edit({ attributes, setAttributes }) {
 		section_class,
 		section_id,
 		section_image,
+		section_image_alt,
 		section_image_class,
 		section_image_style,
 		section_block,
@@ -79,11 +80,12 @@ export default function Edit({ attributes, setAttributes }) {
 					data_aos:'',
 					data_aos_delay:'',
 					img: '',
+					img_alt: '',
 					img_class: '',
 					img_style: '',
 					title: '',
 					content: '',
-					link: '',
+					column_link: '',
 					link_target:'',
 					link_title:''
 				},
@@ -139,7 +141,7 @@ export default function Edit({ attributes, setAttributes }) {
 					<MediaUploadCheck>
 						<MediaUpload
 							onSelect={ ( media ) =>
-								setAttributes( { section_image: media.url } )
+								setAttributes( { section_image: media.url,section_image_alt: media.alt } )
 							}
 							type="image"
 							allowedTypes={ [ 'image' ] }
@@ -396,7 +398,7 @@ export default function Edit({ attributes, setAttributes }) {
 								/>
 								<MediaUploadCheck>
 						<MediaUpload
-							onSelect={ ( media ) =>
+							onSelect={ ( media ) => 
 								updateColumn(index, 'img', media.url)
 							}
 							type="image"
@@ -408,9 +410,9 @@ export default function Edit({ attributes, setAttributes }) {
 										<Button
 											isLink
 											isDestructive
-											onClick={ () =>
+											onClick={ () => {
 												updateColumn(index, 'img', '')
-											}
+											}}
 										>
 											{ __( 'Remove Col Image' ) }
 										</Button>
@@ -472,27 +474,45 @@ export default function Edit({ attributes, setAttributes }) {
 								placeholder={ __( 'Column Content' ) }
 								/>
 								<br></br>
-								<input 
-								value={column.link} 
+								<div style={{display: 'flex'}}>
+								<TextControl
+									label={__('Column Link')}
+									value={column.column_link}
+									onChange={(value) => updateColumn(index, 'column_link', value)}
+								/>
+								<TextControl
+									label={__('Column Link Target')}
+									value={column.link_target}
+									onChange={(value) => updateColumn(index, 'link_target', value)}
+								/>
+								<TextControl
+									label={__('Column Link Title')}
+									value={column.link_title}
+									onChange={(value) => updateColumn(index, 'link_title', value)}
+								/>
+								</div>
+								{/* <input 
+								type="url"
+								value={column.column_link} 
 								onChange={( content) =>
-									updateColumn( index, 'link', content.target.value )
+									updateColumn( index, 'column_link', content.target.value )
 								}
 								placeholder={ __('Column Link')}
-								/>
-								<input 
+								/> */}
+								{/* <input 
 								value={column.link_target} 
 								onChange={( content) =>
 									updateColumn( index, 'link_target', content.target.value )
 								}
 								placeholder={ __('Column Link Target')}
-								/>
-								<input 
+								/> */}
+								{/* <input 
 								value={column.link_title} 
 								onChange={( content) =>
 									updateColumn( index, 'link_title', content.target.value )
 								}
 								placeholder={ __('Column Link Title')}
-								/>
+								/> */}
 								<br></br>
 								<Button
 								style={{border:'1px solid'}}
@@ -506,7 +526,7 @@ export default function Edit({ attributes, setAttributes }) {
 										data_aos_delay: '',
 										title: 'new column',
 										content: 'new column content',
-										link: ''
+										column_link: ''
 									};
 									newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
 									setAttributes({ columns: newColumns }); // Update the columns attribute with the new array

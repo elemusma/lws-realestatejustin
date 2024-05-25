@@ -66,6 +66,7 @@ function Edit({
     section_class,
     section_id,
     section_image,
+    section_image_alt,
     section_image_class,
     section_image_style,
     section_block,
@@ -92,11 +93,12 @@ function Edit({
         data_aos: '',
         data_aos_delay: '',
         img: '',
+        img_alt: '',
         img_class: '',
         img_style: '',
         title: '',
         content: '',
-        link: '',
+        column_link: '',
         link_target: '',
         link_title: ''
       }]
@@ -141,7 +143,8 @@ function Edit({
     initialOpen: false
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
     onSelect: media => setAttributes({
-      section_image: media.url
+      section_image: media.url,
+      section_image_alt: media.alt
     }),
     type: "image",
     allowedTypes: ['image'],
@@ -318,7 +321,9 @@ function Edit({
       }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, column.img && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
         isLink: true,
         isDestructive: true,
-        onClick: () => updateColumn(index, 'img', '')
+        onClick: () => {
+          updateColumn(index, 'img', '');
+        }
       }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Remove Col Image')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
         onClick: open,
         icon: "upload",
@@ -344,19 +349,23 @@ function Edit({
       value: column.content,
       onChange: content => updateColumn(index, 'content', content.target.value),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Content')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-      value: column.link,
-      onChange: content => updateColumn(index, 'link', content.target.value),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        display: 'flex'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link'),
+      value: column.column_link,
+      onChange: value => updateColumn(index, 'column_link', value)
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Target'),
       value: column.link_target,
-      onChange: content => updateColumn(index, 'link_target', content.target.value),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Target')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+      onChange: value => updateColumn(index, 'link_target', value)
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Title'),
       value: column.link_title,
-      onChange: content => updateColumn(index, 'link_title', content.target.value),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Title')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+      onChange: value => updateColumn(index, 'link_title', value)
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       style: {
         border: '1px solid'
       },
@@ -371,7 +380,7 @@ function Edit({
           data_aos_delay: '',
           title: 'new column',
           content: 'new column content',
-          link: ''
+          column_link: ''
         };
         newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
         setAttributes({
@@ -494,30 +503,31 @@ function save({
   }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     class: `${column.inner_col_class}`,
     style: `${column.inner_col_style}`
-  }, column.img && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-    src: column.img,
-    alt: "",
-    className: `w-100 h-100 position-absolute bg-img ${column.img_class}`,
-    style: `top:0;left:0;object-fit:cover;pointer-events:none;${column.img_style}`
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: ``,
     "data-aos": column.data_aos,
     "data-aos-delay": column.data_aos_delay
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `position-relative`
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: `bold`,
+    style: {
+      cursor: 'pointer',
+      marginBottom: '0px'
+    }
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+    value: column.title
+  })), column.img && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+    src: column.img,
+    alt: column.title,
+    className: `w-100 h-auto${column.img_class}`,
+    style: `${column.img_style}`
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     style: {
       margin: '1px'
     }
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
     value: column.content
-  })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: `bold`,
-    style: {
-      cursor: 'pointer'
-    }
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
-    value: column.title
   })))));
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ...blockProps
@@ -527,7 +537,7 @@ function save({
     id: attributes.section_id
   }, attributes.section_image && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: attributes.section_image,
-    alt: "",
+    alt: attributes.section_image_alt,
     className: `w-100 h-100 position-absolute bg-img ${attributes.section_image_class}`,
     style: `top:0;left:0;object-fit:cover;pointer-events:none;${attributes.section_image_style}`
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.RawHTML, null, attributes.section_block), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -545,8 +555,8 @@ function save({
     key: index,
     className: `position-relative text-center ${column.col_class}`,
     style: column.col_style
-  }, column.link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: column.link,
+  }, column.column_link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: column.column_link,
     target: column.link_target,
     title: column.link_title
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Content, {
@@ -648,7 +658,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-resources","version":"0.1.0","title":"Content Resources","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"section_style":{"type":"string","default":""},"section_class":{"type":"string","default":""},"section_id":{"type":"string","default":""},"section_image":{"type":"string","default":null},"section_image_class":{"type":"string"},"section_image_style":{"type":"string"},"section_block":{"type":"string","default":""},"container_style":{"type":"string","default":""},"container_class":{"type":"string","default":"container"},"container_id":{"type":"string","default":""},"row_style":{"type":"string","default":""},"row_class":{"type":"string","default":"row justify-content-center"},"row_id":{"type":"string","default":""},"main_col_content_class":{"type":"string"},"main_col_content_style":{"type":"string"},"main_col_content":{"type":"string"},"columns":{"type":"array","items":{"type":"object"},"default":[{"col_class":"","col_style":"","col_id":"","img":"","title":"","content":"","link":""}]}},"textdomain":"content-resources","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/content-resources","version":"0.1.0","title":"Content Resources","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"attributes":{"section_style":{"type":"string","default":""},"section_class":{"type":"string","default":""},"section_id":{"type":"string","default":""},"section_image":{"type":"string","default":null},"section_image_alt":{"type":"string","default":null},"section_image_class":{"type":"string"},"section_image_style":{"type":"string"},"section_block":{"type":"string","default":""},"container_style":{"type":"string","default":""},"container_class":{"type":"string","default":"container"},"container_id":{"type":"string","default":""},"row_style":{"type":"string","default":""},"row_class":{"type":"string","default":"row justify-content-center"},"row_id":{"type":"string","default":""},"main_col_content_class":{"type":"string"},"main_col_content_style":{"type":"string"},"main_col_content":{"type":"string"},"columns":{"type":"array","items":{"type":"object"},"default":[{"col_class":"","col_style":"","col_id":"","img":"","title":"","content":"","link":""}]}},"textdomain":"content-resources","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

@@ -21,18 +21,19 @@ export default function save({ attributes }) {
 
 	const Content = ({ column }) => (
 		<div class={`${column.inner_col_class}`} style={`${column.inner_col_style}`}>
-		{column.img && (
-			<img
-				src={column.img}
-				alt=""
-				className={`w-100 h-100 position-absolute bg-img ${column.img_class}`}
-				style={`top:0;left:0;object-fit:cover;pointer-events:none;${column.img_style}`}
-			/>
-		)}
+		
 		<div className={``} data-aos={column.data_aos} data-aos-delay={column.data_aos_delay}>
 			<div className={`position-relative`}>
+				<p className={`bold`} style={{ cursor: 'pointer', marginBottom: '0px' }}><RichText.Content value={column.title} /></p>
+				{column.img && (
+					<img
+						src={column.img}
+						alt={column.title}
+						className={`w-100 h-auto${column.img_class}`}
+						style={`${column.img_style}`}
+					/>
+				)}
 				<p style={{ margin: '1px' }}><RichText.Content value={column.content} /></p>
-				<p className={`bold`} style={{ cursor: 'pointer' }}><RichText.Content value={column.title} /></p>
 			</div>
 		</div>
 		</div>
@@ -48,7 +49,7 @@ export default function save({ attributes }) {
 				{attributes.section_image && (
 					<img
 						src={attributes.section_image}
-						alt=""
+						alt={attributes.section_image_alt}
 						className={`w-100 h-100 position-absolute bg-img ${attributes.section_image_class}`}
 						style={`top:0;left:0;object-fit:cover;pointer-events:none;${attributes.section_image_style}`}
 					/>
@@ -74,8 +75,8 @@ export default function save({ attributes }) {
 					</div>
 						{attributes.columns.map((column, index) => (
 							<div key={index} className={`position-relative text-center ${column.col_class}`} style={column.col_style}>
-								{column.link ? (
-									<a href={column.link} target={column.link_target} title={column.link_title}>
+								{column.column_link ? (
+									<a href={column.column_link} target={column.link_target} title={column.link_title}>
 										<Content column={column} />
 									</a>
 								) : (

@@ -32,7 +32,7 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit({ attributes, setAttributes }) {
-	const { section_style, section_class, section_id, section_image, section_image_class, section_image_style, section_block, container_style, container_class, container_id, row_style, row_class, row_id, col_style, col_class, col_id, col_data_aos, col_data_aos_delay } = attributes;
+	const { section_style, section_class, section_id, section_image,section_image_alt, section_image_class, section_image_style, section_block, container_style, container_class, container_id, row_style, row_class, row_id, col_style, col_class, col_id, col_data_aos, col_data_aos_delay } = attributes;
 
 	const [value, setValue] = useState('');
 	return (
@@ -60,7 +60,7 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title={__('Background Image')} initialOpen={false}>
 				<MediaUploadCheck>
   <MediaUpload
-    onSelect={(media) => setAttributes({ section_image: media.url })}
+    onSelect={(media) => setAttributes({ section_image: media.url,section_image_alt: media.alt })}
     type="image"
     allowedTypes={['image']}
     value={section_image}

@@ -62,3 +62,6 @@
     background: white;
     color:black!important;
 }
+.btn-main.outline.white:hover svg {
+    fill: black !important;;
+}

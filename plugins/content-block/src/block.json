@@ -28,6 +28,10 @@
 		  "type": "string",
 		  "default": null
 		},
+		"section_image_alt": {
+		  "type": "string",
+		  "default": null
+		},
 	"section_image_class": {
 	  "type": "string"
 	},
