@@ -24,7 +24,7 @@ echo '<div class="nav">';
 echo '<div class="container">';
 echo '<div class="row">';
 
-echo '<div class="col-lg-3 col-md-4 col-6 text-center d-flex align-items-center">';
+echo '<div class="col-lg-3 col-md-4 col-12 text-center d-flex align-items-center justify-content-lg-start justify-content-center">';
 
 echo '<a href="' . home_url() . '">';
 echo '<div class="" id="logo-main" style="width:100%;transition:all 1s ease-in-out;">';
@@ -54,7 +54,7 @@ echo '</div>';
 // ));
 
 // echo '</div>';
-echo '<div class="col-lg-9 col-6 text-right text-white d-lg-flex align-items-center justify-content-end">';
+echo '<div class="col-lg-9 col-12 text-lg-right text-center text-white d-lg-flex align-items-center justify-content-lg-end justify-content-center">';
 
 // echo '<small>Call Now</small><br>';
 
@@ -98,15 +98,15 @@ echo do_shortcode('[button href="#" style="font-size:12px;padding:5px 15px;" cla
 echo '</div>';
 
 
-echo '<div>';
-echo '<a id="mobileMenuToggle" class="openModalBtn nav-toggle" data-modal-id="mobileMenu" title="mobile menu nav toggle">';
-echo '<div>';
-echo '<div class="line-1 bg-accent"></div>';
-echo '<div class="line-2 bg-accent"></div>';
-echo '<div class="line-3 bg-accent"></div>';
-echo '</div>';
-echo '</a>';
-echo '</div>';
+// echo '<div>';
+// echo '<a id="mobileMenuToggle" class="openModalBtn nav-toggle" data-modal-id="mobileMenu" title="mobile menu nav toggle">';
+// echo '<div>';
+// echo '<div class="line-1 bg-accent"></div>';
+// echo '<div class="line-2 bg-accent"></div>';
+// echo '<div class="line-3 bg-accent"></div>';
+// echo '</div>';
+// echo '</a>';
+// echo '</div>';
 
 // echo get_search_form();
 
