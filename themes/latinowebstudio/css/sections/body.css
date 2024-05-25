@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --accent-primary: #129CF8;
   --accent-primary-hover: #066DB2;
   --accent-secondary: #2F2F2F;
@@ -6,7 +6,7 @@
   --light: #f7f7f7;
   --light-secondary: #e8edec;
   --text-shadow: 1px 1px 3px black;
-}
+} */
 
 html {
   scroll-behavior: smooth;

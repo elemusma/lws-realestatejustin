@@ -9,8 +9,15 @@ Version: 1.0
 */
 
 :root {
-    --primary: #f26522;
-    --secondary: #0f2849;
+    --accent-primary: #DFB249;
+    --accent-secondary: #0f2849;
+    --accent-tertiary: #129CF8;
+  --accent-tertiary-hover: #066DB2;
+  --accent-quaternary: #2F2F2F;
+  --accent-quaternary-hover: #CA8E02;
+  --light: #f7f7f7;
+  --light-secondary: #e8edec;
+  --text-shadow: 1px 1px 3px black;
 }
 
 .logged-in header.position-fixed {

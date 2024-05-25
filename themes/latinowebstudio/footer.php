@@ -2,78 +2,69 @@
 
 echo '<footer>';
 echo '<section class="bg-accent-secondary" style="padding-top:50px;padding-bottom:25px;">';
-echo '<div class="container">';
-echo '<div class="row justify-content-center">';
+// echo '<div class="container">';
+// echo '<div class="row justify-content-center">';
 
-echo '<div class="col-lg-9 text-center" style="">';
-echo do_shortcode('[button href="tel:+1' . globalPhone() . '" class="white"]Speak with an Expert[/button]');
-echo do_shortcode('[button href="/wp-content/uploads/2024/04/Mark-McFarland-CV-Not-Retained.pdf" target="_blank" class="white"]CV Download[/button]');
-echo do_shortcode('[button href="/contact/" class="white"]Contact Now[/button]');
-echo '</div>';
-echo '</div>';
-echo '</div>';
+// echo '<div class="col-lg-9 text-center" style="">';
+// echo do_shortcode('[button href="tel:+1' . globalPhone() . '" class="white"]Speak with an Expert[/button]');
+// echo do_shortcode('[button href="/wp-content/uploads/2024/04/Mark-McFarland-CV-Not-Retained.pdf" target="_blank" class="white"]CV Download[/button]');
+// echo do_shortcode('[button href="/contact/" class="white"]Contact Now[/button]');
+// echo '</div>';
+// echo '</div>';
+// echo '</div>';
 
-echo '<hr style="margin:40px auto !important;border-color:#f7f7f7;">';
+// echo '<hr style="margin:40px auto !important;border-color:#f7f7f7;">';
 
 echo '<div class="container">';
 echo '<div class="row">';
 
 echo '<div class="col-lg-5 col-md-6 text-white">';
-echo '<a href="' . home_url() . '">';
-echo '<div style="width:205px;fill:white;">';
-echo logoSVG();
-echo '</div>';
+echo '<a href="' . home_url() . '" title="footer logo that goes back to homepage">';
+echo '<span style="font-size:28px;" class="text-accent">Real Estate Justin</span><br>';
+
 echo '</a>';
+echo '<span>TV HOST. AUTHOR. INVESTOR. ENTREPRENEUR. SPEAKER.</span>';
 
 echo '<p class="">' . companyAbout() . '</p>';
 
 echo '</div>';
-echo '<div class="col-lg-3 col-md-6 text-white">';
-echo '<p><strong>Expert Witness And Analytic Services</strong></p>';
+echo '<div class="col-lg-6 col-md-6 text-white">';
 
-echo expertWitness();
+if(socialIconsRepeater()) {
+    echo '<div class="d-flex justify-content-end h-100">';
+    foreach(socialIconsRepeater() as $item) {
+        $textarea = isset($item['svg-social-logos']) ? $item['svg-social-logos'] : '';
+        $link = isset($item['opt-link-1']) ? $item['opt-link-1'] : '';
+
+        echo '<a href="' . $link['url'] . '" title="' . $link['text'] . '" target="' . $link['target'] . '" class="d-block" style="margin:auto 15px;">';
+        echo '<div class="" style="">';
+        echo $textarea;
+        echo '</div>';
+        echo '</a>';
+    }
+    echo '</div>';
+}
+
+// echo '<p><strong>Expert Witness And Analytic Services</strong></p>';
+// echo expertWitness();
+
+
+echo '</div>';
+// echo '<div class="col-lg-3 col-md-6 text-white">';
+// echo '<p><strong>Client Resources</strong></p>';
 
 // wp_nav_menu(array(
-//     'menu' => 'Forensic Electrical, Telecom, & Wireless Engineering',
+//     'menu' => 'footer',
 //     'menu_class'=>'menu list-unstyled mb-0'
 // ));
 
-echo '</div>';
-echo '<div class="col-lg-3 col-md-6 text-white">';
-echo '<p><strong>Client Resources</strong></p>';
-
-wp_nav_menu(array(
-    'menu' => 'footer',
-    'menu_class'=>'menu list-unstyled mb-0'
-));
-
-echo '</div>';
+// echo '</div>';
 
 echo '</div>';
 echo '</div>';
 echo '</section>';
 
-// echo '<section class="pt-5 bg-accent">';
-// echo '<div class="container">';
-// echo '<div class="row justify-content-center">';
-// echo '<div class="col-12">';
 
-
-
-// echo '</div>';
-// echo '<div class="col-12 text-center text-white">';
-
-// // echo get_template_part('partials/si');
-
-// echo '<div class="text-gray-1 pt-4">';
-
-// // the_field('website_message','options');
-
-// echo '</div>';
-// echo '</div>';
-// echo '</div>';
-// echo '</div>';
-// echo '</section>';
 echo '<div class="text-center bg-light" style="padding:15px 45px;">';
     echo '<div class="d-flex justify-content-center align-items-center">';
         echo '<small class=""><a href="https://latinowebstudio.com/" target="_blank" rel="noopener noreferrer" title="Web Design, Web Development & SEO done by Latino Web Studio in Denver, CO" style="" class="">Web Design, Web Development & SEO in Denver, CO</a> done by Latino Web Studio</small>';
@@ -81,34 +72,34 @@ echo '<div class="text-center bg-light" style="padding:15px 45px;">';
 echo '</div>';
 
 
-echo '<div id="servicesMenuModal" class="modal" style="opacity:1;">';
-//   <!-- Modal content -->
-echo '<div class="modal-content" style="background:var(--light);border:none;width:90%;max-width: 1120px;padding:0px;height:0px;transition:all .5s ease-in-out;border-radius:0px;">';
-// echo '<span class="close">&times;</span>';
+// echo '<div id="servicesMenuModal" class="modal" style="opacity:1;">';
+// //   <!-- Modal content -->
+// echo '<div class="modal-content" style="background:var(--light);border:none;width:90%;max-width: 1120px;padding:0px;height:0px;transition:all .5s ease-in-out;border-radius:0px;">';
+// // echo '<span class="close">&times;</span>';
 
-echo '<div class="row" style="padding:20px;">';
-echo '<div class="col-lg-6">';
-echo '<p><strong>Forensic Electrical,Telecom, &amp; Wireless Engineering</strong></p>';
+// echo '<div class="row" style="padding:20px;">';
+// echo '<div class="col-lg-6">';
+// echo '<p><strong>Forensic Electrical,Telecom, &amp; Wireless Engineering</strong></p>';
 
-wp_nav_menu(array(
-    'menu' => 'Forensic Electrical, Telecom, & Wireless Engineering',
-    'menu_class'=>'menu list-unstyled mb-0'
-));
+// wp_nav_menu(array(
+//     'menu' => 'Forensic Electrical, Telecom, & Wireless Engineering',
+//     'menu_class'=>'menu list-unstyled mb-0'
+// ));
 
-echo '</div>';
-echo '<div class="col-lg-6">';
-echo '<p><strong>Applied Research &amp; Analytics</strong></p>';
+// echo '</div>';
+// echo '<div class="col-lg-6">';
+// echo '<p><strong>Applied Research &amp; Analytics</strong></p>';
 
-wp_nav_menu(array(
-    'menu' => 'Applied Research & Analytics',
-    'menu_class'=>'menu list-unstyled mb-0'
-));
+// wp_nav_menu(array(
+//     'menu' => 'Applied Research & Analytics',
+//     'menu_class'=>'menu list-unstyled mb-0'
+// ));
 
-echo '</div>';
-echo '</div>';
+// echo '</div>';
+// echo '</div>';
 
-echo '</div>';
-echo '</div>';
+// echo '</div>';
+// echo '</div>';
 
 
 // <!-- The first Modal -->

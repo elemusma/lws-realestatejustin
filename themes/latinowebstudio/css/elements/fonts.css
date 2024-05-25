@@ -64,7 +64,7 @@ body {
 h1,.h1,h2,.h2,h3,.h3,h4,.h4,h5,.h5,h6,.h6{
   font-family: 'poppinsregular';
   line-height: 1;
-  /* margin:0; */
+  margin:0;
 }
 
 h1, .h1 {
@@ -130,6 +130,10 @@ ul.arrows {
   position: absolute;
   top: 8px;
   left: -20px;
+}
+
+small, .small {
+  font-size:80%;
 }
 
 @media only screen and (max-width:991px) {

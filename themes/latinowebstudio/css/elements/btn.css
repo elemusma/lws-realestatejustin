@@ -6,7 +6,7 @@
     text-decoration: none;
     color: black!important;
     text-shadow:none;
-    border-radius: 8px;
+    /* border-radius: 8px; */
     text-transform: uppercase;
     border:1px solid var(--accent-primary);
     font-family: 'poppinssemibold';
@@ -33,13 +33,13 @@
 }
 
 .btn-main.outline {
-    border: 1px solid var(--accent-secondary);
-    color:var(--accent-secondary) !important;
+    border: 1px solid var(--accent-primary);
+    color:var(--accent-primary) !important;
     background:transparent;
 }
 
 .btn-main.outline:hover {
-    background: var(--accent-secondary);
+    background: var(--accent-primary);
     color:black !important;
 }
 .btn-main.outline.accent {
@@ -54,11 +54,11 @@
 }
 .btn-main.outline.white {
     border-color: white;
-    color:white;
+    color:white!important;
     background:transparent;
 }
 
 .btn-main.outline.white:hover {
     background: white;
-    color:black;
+    color:black!important;
 }
