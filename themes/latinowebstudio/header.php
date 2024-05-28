@@ -26,8 +26,8 @@ echo '<div class="row justify-content-between">';
 
 echo '<div class="col-lg-3 col-md-4 col-12 text-center d-flex align-items-center justify-content-lg-start justify-content-center">';
 
-echo '<div>';
-echo '<a href="' . home_url() . '" title="Real Estate Justin, partner up with Justin on your first deal" style="padding:15px 0px" class="d-block">';
+echo '<div class="align-items-center d-md-flex h-100">';
+echo '<a href="' . home_url() . '" title="Real Estate Justin, partner up with Justin on your first deal" style="padding:12px 0px" class="d-block">';
 echo '<div class="" id="logo-main" style="width:100%;transition:all 1s ease-in-out;">';
 echo '<div style="pointer-events:none;">';
 echo logoSVG();
@@ -35,7 +35,10 @@ echo '</div>';
 echo '</div>';
 echo '</a>';
 
-// echo get_template_part('partials/si');
+echo '<div class="d-md-none d-block">';
+echo get_template_part('partials/si');
+echo '</div>';
+
 echo '</div>';
 
 echo '</div>';
@@ -63,9 +66,11 @@ echo '</div>';
 // ));
 
 // echo '</div>';
-echo '<div class="col-md-6 col-12 text-lg-right text-center text-white d-lg-flex align-items-center justify-content-md-end justify-content-center" style="padding:0px;">';
+echo '<div class="col-lg-6 col-md-8 col-12 text-lg-right text-center text-white d-md-flex align-items-center justify-content-md-end justify-content-center" style="padding:0px;">';
 
+echo '<div class="d-md-block d-none">';
 echo get_template_part('partials/si');
+echo '</div>';
 
 // echo '<small>Call Now</small><br>';
 
