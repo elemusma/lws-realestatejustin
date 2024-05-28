@@ -7,7 +7,7 @@ $('.justin-carousel').owlCarousel({
     // autoHeight: false,
     // autoHeightClass: 'owl-height',
     // stagePadding:170,
-    autoplay: false,
+    autoplay: true,
     autoplayTimeout: 2500,
     autoplaySpeed: 5000, // this seems to make it autoscroll
     autoplayHoverPause: false,
