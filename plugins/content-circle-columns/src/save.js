@@ -20,7 +20,7 @@ export default function save({ attributes }) {
 	const blockProps = useBlockProps.save();
 
 	const Content = ({ column }) => (
-		<div class={`${column.col_class}`} style={`${column.col_style}`}>
+		<div>
 		{column.img && (
 			<img
 				src={column.img}
@@ -78,14 +78,13 @@ export default function save({ attributes }) {
 					</div>
 						{attributes.columns.map((column, index) => (
 							<div key={index} className={`position-relative text-center ${column.col_class}`} style={column.col_style}>
-								<Content column={column} />
-								{/* {column.link ? (
-									<a href={column.link} target={column.link_target} title={column.link_title}>
+								{column.url ? (
+									<a href={column.url} target={column.linkTarget} title={column.linkTitle}>
 										<Content column={column} />
 									</a>
 								) : (
 									<Content column={column} />
-								)} */}
+								)}
 							</div>
 						))}
 					</div>

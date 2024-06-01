@@ -92,7 +92,10 @@ function Edit({
         data_aos: '',
         data_aos_delay: '',
         title: '',
-        content: ''
+        content: '',
+        url: '',
+        linkTarget: '_self',
+        linkTitle: ''
       }]
     });
   };
@@ -308,7 +311,25 @@ function Edit({
       value: column.content,
       onChange: content => updateColumn(index, 'content', content.target.value),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Content')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+      style: {
+        display: 'flex'
+      }
+    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link URL')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.URLInput, {
+      value: column.url,
+      onChange: newUrl => updateColumn(index, 'url', newUrl)
+    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("label", null, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Link Title')), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+      value: column.linkTitle,
+      onChange: newTitle => updateColumn(index, 'linkTitle', newTitle),
+      style: {
+        height: '33px',
+        transform: 'translate(0px, 1px)'
+      }
+    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Open in New Tab'),
+      checked: column.linkTarget === '_blank',
+      onChange: () => updateColumn(index, 'linkTarget', column.linkTarget === '_self' ? '_blank' : '_self')
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       style: {
         border: '1px solid'
       },
@@ -323,7 +344,7 @@ function Edit({
           data_aos_delay: '',
           title: 'new column',
           content: 'new column content',
-          link: ''
+          url: ''
         };
         newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
         setAttributes({
@@ -443,10 +464,7 @@ function save({
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
   const Content = ({
     column
-  }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    class: `${column.col_class}`,
-    style: `${column.col_style}`
-  }, column.img && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
+  }) => (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", null, column.img && (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
     src: column.img,
     alt: "",
     className: `w-100 h-100 position-absolute bg-img ${column.img_class}`,
@@ -503,7 +521,13 @@ function save({
     key: index,
     className: `position-relative text-center ${column.col_class}`,
     style: column.col_style
+  }, column.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: column.url,
+    target: column.linkTarget,
+    title: column.linkTitle
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Content, {
+    column: column
+  })) : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Content, {
     column: column
   })))))));
 }

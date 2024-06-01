@@ -18,12 +18,14 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 	RichText,
+	URLInput
 } from '@wordpress/block-editor';
 import {
 	Button,
 	PanelBody,
 	__experimentalInputControl as InputControl,
 	TextControl,
+	ToggleControl
 } from '@wordpress/components';
 import { useState, useEffect } from '@wordpress/element';
 
@@ -64,6 +66,7 @@ export default function Edit({ attributes, setAttributes }) {
 		columns,
 	} = attributes;
 
+
 	const [ value, setValue ] = useState( '' );
 
 	const addColumn = () => {
@@ -79,7 +82,10 @@ export default function Edit({ attributes, setAttributes }) {
 					data_aos:'',
 					data_aos_delay:'',
 					title: '',
-					content: ''
+					content: '',
+					url: '',
+					linkTarget: '_self',
+                    linkTitle: ''
 				},
 			],
 		} );
@@ -401,6 +407,28 @@ export default function Edit({ attributes, setAttributes }) {
 								placeholder={ __( 'Column Content' ) }
 								/>
 								<br></br>
+								<div style={{ display: 'flex' }}>
+								<div>
+								<label>{__('Link URL')}</label>
+								<URLInput
+									value={column.url}
+									onChange={(newUrl) => updateColumn(index, 'url', newUrl)}
+									/>
+								</div>
+								<div>
+								<label>{__('Link Title')}</label>
+								<TextControl
+                                    value={column.linkTitle}
+                                    onChange={(newTitle) => updateColumn(index, 'linkTitle', newTitle)}
+									style={{height:'33px',transform:'translate(0px, 1px)'}}
+									/>
+								</div>
+								</div>
+                                <ToggleControl
+                                    label={__('Open in New Tab')}
+                                    checked={column.linkTarget === '_blank'}
+                                    onChange={() => updateColumn(index, 'linkTarget', column.linkTarget === '_self' ? '_blank' : '_self')}
+                                />
 								<Button
 								style={{border:'1px solid'}}
 								onClick={() => {
@@ -413,7 +441,7 @@ export default function Edit({ attributes, setAttributes }) {
 										data_aos_delay: '',
 										title: 'new column',
 										content: 'new column content',
-										link: ''
+										url: ''
 									};
 									newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
 									setAttributes({ columns: newColumns }); // Update the columns attribute with the new array
