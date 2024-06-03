@@ -75,8 +75,8 @@ export default function save({ attributes }) {
 					</div>
 						{attributes.columns.map((column, index) => (
 							<div key={index} className={`position-relative text-center ${column.col_class}`} style={column.col_style}>
-								{column.column_link ? (
-									<a href={column.column_link} target={column.link_target} title={column.link_title}>
+								{column.url ? (
+									<a href={column.url} target={column.link_target} title={column.link_title}>
 										<Content column={column} />
 									</a>
 								) : (

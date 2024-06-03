@@ -98,7 +98,7 @@ function Edit({
         img_style: '',
         title: '',
         content: '',
-        column_link: '',
+        url: '',
         link_target: '',
         link_title: ''
       }]
@@ -310,7 +310,11 @@ function Edit({
       value: column.data_aos_delay,
       onChange: content => updateColumn(index, 'data_aos_delay', content.target.value)
     }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("img", {
-      src: column.img
+      src: column.img,
+      style: {
+        width: '250px:',
+        height: '200px'
+      }
     }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUpload, {
       onSelect: media => updateColumn(index, 'img', media.url),
       type: "image",
@@ -341,31 +345,11 @@ function Edit({
       type: "text",
       value: column.img_style,
       onChange: content => updateColumn(index, 'img_style', content.target.value)
-    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    }))), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, "Add Title Below"), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
       value: column.title,
       onChange: content => updateColumn(index, 'title', content),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Title')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("textarea", {
-      value: column.content,
-      onChange: content => updateColumn(index, 'content', content.target.value),
-      placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Content')
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-      style: {
-        display: 'flex'
-      }
-    }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link'),
-      value: column.column_link,
-      onChange: value => updateColumn(index, 'column_link', value)
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Target'),
-      value: column.link_target,
-      onChange: value => updateColumn(index, 'link_target', value)
-    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Column Link Title'),
-      value: column.link_title,
-      onChange: value => updateColumn(index, 'link_title', value)
-    })), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+    }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
       style: {
         border: '1px solid'
       },
@@ -380,7 +364,9 @@ function Edit({
           data_aos_delay: '',
           title: 'new column',
           content: 'new column content',
-          column_link: ''
+          url: '',
+          link_target: '',
+          link_title: ''
         };
         newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
         setAttributes({
@@ -555,8 +541,8 @@ function save({
     key: index,
     className: `position-relative text-center ${column.col_class}`,
     style: column.col_style
-  }, column.column_link ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
-    href: column.column_link,
+  }, column.url ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("a", {
+    href: column.url,
     target: column.link_target,
     title: column.link_title
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(Content, {

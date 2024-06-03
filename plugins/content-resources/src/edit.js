@@ -18,6 +18,7 @@ import {
 	MediaUpload,
 	MediaUploadCheck,
 	RichText,
+	URLInput
 } from '@wordpress/block-editor';
 import {
 	Button,
@@ -85,7 +86,7 @@ export default function Edit({ attributes, setAttributes }) {
 					img_style: '',
 					title: '',
 					content: '',
-					column_link: '',
+					url: '',
 					link_target:'',
 					link_title:''
 				},
@@ -395,6 +396,7 @@ export default function Edit({ attributes, setAttributes }) {
 								</div>
 								<img 
 									src={column.img}
+									style={{width:'250px:',height:'200px'}}
 								/>
 								<MediaUploadCheck>
 						<MediaUpload
@@ -458,7 +460,7 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 						</div>
 					</div>
-					
+								<h2>Add Title Below</h2>
 								<RichText
 									value={ column.title }
 									onChange={ ( content ) =>
@@ -466,20 +468,21 @@ export default function Edit({ attributes, setAttributes }) {
 									}
 									placeholder={ __( 'Column Title' ) }
 								/>
-								<textarea 
+								{/* <textarea 
 								value={ column.content }
 								onChange={ ( content ) =>
 									updateColumn( index, 'content', content.target.value )
 								}
 								placeholder={ __( 'Column Content' ) }
+								/> */}
+								{/* <div style={{display: 'flex'}}>
+								<div>
+								<label>{__('Column Link')}</label>
+								<URLInput
+									value={column.url}
+									onChange={(newUrl) => updateColumn(index, 'url', newUrl)}
 								/>
-								<br></br>
-								<div style={{display: 'flex'}}>
-								<TextControl
-									label={__('Column Link')}
-									value={column.column_link}
-									onChange={(value) => updateColumn(index, 'column_link', value)}
-								/>
+								</div>
 								<TextControl
 									label={__('Column Link Target')}
 									value={column.link_target}
@@ -490,29 +493,8 @@ export default function Edit({ attributes, setAttributes }) {
 									value={column.link_title}
 									onChange={(value) => updateColumn(index, 'link_title', value)}
 								/>
-								</div>
-								{/* <input 
-								type="url"
-								value={column.column_link} 
-								onChange={( content) =>
-									updateColumn( index, 'column_link', content.target.value )
-								}
-								placeholder={ __('Column Link')}
-								/> */}
-								{/* <input 
-								value={column.link_target} 
-								onChange={( content) =>
-									updateColumn( index, 'link_target', content.target.value )
-								}
-								placeholder={ __('Column Link Target')}
-								/> */}
-								{/* <input 
-								value={column.link_title} 
-								onChange={( content) =>
-									updateColumn( index, 'link_title', content.target.value )
-								}
-								placeholder={ __('Column Link Title')}
-								/> */}
+								</div> */}
+								
 								<br></br>
 								<Button
 								style={{border:'1px solid'}}
@@ -526,7 +508,9 @@ export default function Edit({ attributes, setAttributes }) {
 										data_aos_delay: '',
 										title: 'new column',
 										content: 'new column content',
-										column_link: ''
+										url: '',
+										link_target:'',
+										link_title:''
 									};
 									newColumns.splice(index, 0, newColumn); // Insert the new column at the current index
 									setAttributes({ columns: newColumns }); // Update the columns attribute with the new array
